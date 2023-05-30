@@ -1,0 +1,30 @@
+/* * 선택기는 다른 요소 내의 모든 요소를 ​​선택할 수도 있습니다 */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+}
+
+header {
+    background-color: yellow;
+    text-align: center;
+    padding: 30px;
+
+}
+
+.searchdiv {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.search-input {
+    margin-left: 20px;
+    min-width: 200px;
+    padding: 5px 10px;
+}
+
+.search-btn {
+    margin-left: 10px;
+    padding: 5px;
+}
