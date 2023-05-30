@@ -5,21 +5,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>개인 과제</title>
     <link rel="stylesheet" href="movie.css">
+    <title>개인 과제</title>
+   
 </head>
 
 <body>
     <header>
-        <h1>내배캠 최고 평점 영화 콜렉션</h1>
+        <h1>평점 영화 콜렉션</h1>
     </header>
 
-    <div class=searchdiv>
+    <div class="search">
         <label> 영화검색 :</label>
         <!-- 왜안될까? -->
-        <input type="text" id="serch-input" placeholder=" 영화를 제목을 검색하세요." autofoucus>
+        <input type="text" id="serch-input" placeholder=" 영화를 제목을 검색하세요." >
 
-        <button type="submit" id="serch-btn">검색</button>
+        <button type="submit" id="serch-btn" onclick = "filter()">검색</button>
     </div>
 
     <!-- 하나의 카드섹션 -->
@@ -56,6 +57,7 @@
             }
         };
         fetch('https://api.themoviedb.org/3/tv/top_rated?language=en-US&page=1', options)
+            
 
 
             // 여기부터 다시
@@ -63,22 +65,24 @@
 
             .then(data => {
                 // 위에 fetch를통해서 통신을 했고 api주소로 거기서 제공해주는 데이터를 확인하기위해 
-                console.log(data);
-                data.result.forEach(element => {
+                console.log(data)
+                data.results.forEach(element => {
                     const temp = document.createElement("div");
                     // 위에 하드코딩 한걸 여기에 `` 으로 만들어서 쫘라라락.
-                    temp.innerHTML = ` <div class="movie-card" id="${element.id}">
-            <img src="https://image.tmdb.org/t/p/w500/${element.backdrop_path}" alt="The Godfather">
-            <h3>${element.title}</h3>
-            <p>${element.overview}</p>
-            <p>Rating: ${element.vote_average}</p>
-        </div>`
+                    temp.innerHTML = ` <div class= "movie-card"(${element.id})'>
+                                        <img src="https://image.tmdb.org/t/p/w500${element.backdrop_path}" alt=""Breaking Bad"">
+                                        <h3 class = "title">${element.name}</h3>
+                                        <p>${element.overview}</p>
+                                        <p>Rating: ${element.vote_average}</p>
+                                    </div>`
 
                     document.getElementById("card-section").appendChild(temp)
                 });
             })
 
             .catch(err => alert(err));
+
+        
     </script>
 
 
