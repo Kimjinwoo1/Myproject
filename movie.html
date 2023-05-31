@@ -17,7 +17,7 @@
 
     <div class="search">
         <label> 영화검색 :</label>
-        <!-- 왜안될까? -->
+        <!-- 왜안될까? 검색 포커스하기-->
         <input type="text" id="serch-input" placeholder=" 영화를 제목을 검색하세요." >
 
         <button type="submit" id="serch-btn" onclick = "filter()">검색</button>
@@ -43,7 +43,7 @@
                 including an older prisoner named Red -- for his integrity and unquenchable sense of hope.</p>
             <p>Rating: 8.7</p>
         </div> -->
-    <section class="card-list" id="card-section">
+    <section class="card-list"  id="card-section">
 
     </section>
 
@@ -66,11 +66,12 @@
             .then(data => {
                 // 위에 fetch를통해서 통신을 했고 api주소로 거기서 제공해주는 데이터를 확인하기위해 
                 console.log(data)
+                // forEach 화살표 함수면 element 괄호 하나만 열려있는이유..?
                 data.results.forEach(element => {
                     const temp = document.createElement("div");
                     // 위에 하드코딩 한걸 여기에 `` 으로 만들어서 쫘라라락.
-                    temp.innerHTML = ` <div class= "movie-card"(${element.id})'>
-                                        <img src="https://image.tmdb.org/t/p/w500${element.backdrop_path}" alt=""Breaking Bad"">
+                    temp.innerHTML = ` <div class= "movie-card" onclick = 'titleid(${element.id})'>
+                                        <img src="https://image.tmdb.org/t/p/w500${element.backdrop_path}" alt="Breaking Bad">
                                         <h3 class = "title">${element.name}</h3>
                                         <p>${element.overview}</p>
                                         <p>Rating: ${element.vote_average}</p>
@@ -80,8 +81,14 @@
                 });
             })
 
-            .catch(err => alert(err));
+                .catch(err => alert(err));
 
+            function titleid(id){
+                alert('영화 id :'+ id)
+            }
+
+
+            
         
     </script>
 
