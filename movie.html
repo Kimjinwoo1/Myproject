@@ -17,10 +17,10 @@
 
     <div class="search">
         <label> 영화검색 :</label>
-        <!-- 왜안될까? 검색 포커스하기-->
+        
         <input type="text" id="serch-input" placeholder=" 영화를 제목을 검색하세요." >
 
-        <button type="submit" id="serch-btn" onclick = "filter()">검색</button>
+        <button type="submit" id="serch-btn" onclick = filter()>검색</button>
     </div>
 
     <!-- 하나의 카드섹션 -->
@@ -66,7 +66,9 @@
             .then(data => {
                 // 위에 fetch를통해서 통신을 했고 api주소로 거기서 제공해주는 데이터를 확인하기위해 
                 console.log(data)
-                // forEach 화살표 함수면 element 괄호 하나만 열려있는이유..?
+                
+                
+
                 data.results.forEach(element => {
                     const temp = document.createElement("div");
                     // 위에 하드코딩 한걸 여기에 `` 으로 만들어서 쫘라라락.
@@ -86,8 +88,36 @@
                 // 섹션 클릭시 카드 아이디 나타나게
             function titleid(id){
                 alert('영화 id :'+ id)
-
             }
+           
+            function filter(){
+                
+                let search = document.getElementById("serch-input").value.toLowerCase();
+                // 20개 리스트를 담은 listInner
+                let listInner = document.getElementsByClassName("movie-card");
+
+                for (let i = 0; i <listInner.length; i++){
+
+                    
+                    // console.log(listInner[i].getElementsByClassName("title"));
+                     
+                    let title = listInner[i].getElementsByClassName("title")[0].innerText;
+
+                    
+                    // console.log(search)
+                    
+                    // console.log("title : " + title);
+
+                    if(title.toLowerCase().indexOf(search) != -1){
+                        
+                        listInner[i].style.display = "grid"
+                    }else{
+                        listInner[i].style.display = "none";
+                    }
+                }
+            }
+
+
 
 
             
