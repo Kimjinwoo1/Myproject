@@ -68,18 +68,19 @@
                 console.log(data)
                 
                 
-
+                let cardSection = document.getElementById("card-section")
                 data.results.forEach(element => {
-                    const temp = document.createElement("div");
-                    // 위에 하드코딩 한걸 여기에 `` 으로 만들어서 쫘라라락.
-                    temp.innerHTML = ` <div class= "movie-card" onclick = 'titleid(${element.id})'>
+
+                    let temp =  ` <div class= "movie-card" onclick = 'titled(${element.id})'>
                                         <img src="https://image.tmdb.org/t/p/w500${element.backdrop_path}" alt="Breaking Bad">
                                         <h3 class = "title">${element.name}</h3>
                                         <p>${element.overview}</p>
                                         <p>Rating: ${element.vote_average}</p>
-                                    </div>`
+                                        </div>
+                                   `
 
-                    document.getElementById("card-section").appendChild(temp)
+                                //    insertAdjacentHtml ()에대해 알아보자.
+                    cardSection.insertAdjacentHTML('beforeend', temp);
                 });
             })
 
